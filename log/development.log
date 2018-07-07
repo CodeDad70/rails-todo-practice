@@ -829,3 +829,178 @@ Migrating to AddCompletedAtToTodoItems (20180707012149)
             FROM sqlite_temp_master
             WHERE name='index_todo_items_on_todo_list_id' AND type='index'
 [0m
+Started POST "/todo_lists/2/todo_items" for 127.0.0.1 at 2018-07-06 21:35:51 -0400
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TodoItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KaUp7xehYCjYt7UNMowk0z49WIP24qN7XhAOReXgGn5uGqg6yTckxovanQvfOSd++0ZXv20MDRl7oK4QgRrFZw==", "todo_item"=>{"content"=>"dfdfd"}, "commit"=>"Create Todo item", "todo_list_id"=>"2"}
+  [1m[36mTodoList Load (0.3ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.9ms)[0m  [1m[32mINSERT INTO "todo_items" ("content", "todo_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "dfdfd"], ["todo_list_id", 2], ["created_at", "2018-07-07 01:35:52.544700"], ["updated_at", "2018-07-07 01:35:52.544700"]]
+  [1m[35m (19.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/todo_lists/2
+Completed 302 Found in 242ms (ActiveRecord: 27.9ms)
+
+
+Started GET "/todo_lists/2" for 127.0.0.1 at 2018-07-06 21:35:52 -0400
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.1ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.3ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ?[0m  [["todo_list_id", 2]]
+  Rendered collection of todo_items/_todo_item.html.erb [2 times] (2.5ms)
+  Rendered todo_items/_form.html.erb (48.3ms)
+  Rendered todo_lists/show.html.erb within layouts/application (96.1ms)
+Completed 200 OK in 1067ms (Views: 1048.9ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/todo_lists/2/todo_items/3" for 127.0.0.1 at 2018-07-06 21:35:55 -0400
+Processing by TodoItemsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"KaUp7xehYCjYt7UNMowk0z49WIP24qN7XhAOReXgGn5uGqg6yTckxovanQvfOSd++0ZXv20MDRl7oK4QgRrFZw==", "todo_list_id"=>"2", "id"=>"3"}
+  [1m[36mTodoList Load (0.2ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTodoItem Load (0.4ms)[0m  [1m[34mSELECT  "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? AND "todo_items"."id" = ? LIMIT ?[0m  [["todo_list_id", 2], ["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[31mDELETE FROM "todo_items" WHERE "todo_items"."id" = ?[0m  [["id", 3]]
+  [1m[35m (41.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/todo_lists/2
+Completed 302 Found in 59ms (ActiveRecord: 44.1ms)
+
+
+Started GET "/todo_lists/2" for 127.0.0.1 at 2018-07-06 21:35:55 -0400
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.3ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.1ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ?[0m  [["todo_list_id", 2]]
+  Rendered collection of todo_items/_todo_item.html.erb [1 times] (3.7ms)
+  Rendered todo_items/_form.html.erb (5.5ms)
+  Rendered todo_lists/show.html.erb within layouts/application (23.5ms)
+Completed 200 OK in 110ms (Views: 104.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/todo_lists/2/todo_items" for 127.0.0.1 at 2018-07-06 21:35:59 -0400
+Processing by TodoItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nqpddFuRGILadCcDbCqDaIC0fPb8fl7CN0UFScG8NFfZFdyhhQdcbIkZDwWBn4DFRc9zymeQ8KAS9aUcpUbrTg==", "todo_item"=>{"content"=>"ttt"}, "commit"=>"Create Todo item", "todo_list_id"=>"2"}
+  [1m[36mTodoList Load (0.1ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "todo_items" ("content", "todo_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "ttt"], ["todo_list_id", 2], ["created_at", "2018-07-07 01:35:59.091257"], ["updated_at", "2018-07-07 01:35:59.091257"]]
+  [1m[35m (11.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/todo_lists/2
+Completed 302 Found in 32ms (ActiveRecord: 14.2ms)
+
+
+Started GET "/todo_lists/2" for 127.0.0.1 at 2018-07-06 21:35:59 -0400
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.1ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.1ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ?[0m  [["todo_list_id", 2]]
+  Rendered collection of todo_items/_todo_item.html.erb [2 times] (1.0ms)
+  Rendered todo_items/_form.html.erb (4.6ms)
+  Rendered todo_lists/show.html.erb within layouts/application (19.7ms)
+Completed 200 OK in 156ms (Views: 150.8ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/todo_lists/2/todo_items/5" for 127.0.0.1 at 2018-07-06 21:36:02 -0400
+Processing by TodoItemsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"WMJkMCKIp5g0iOEK6oJLm6UPzLuARjRw79uI1Y2+NdgffeXl/B7jdmflyQwHN0g2YHTDhxuomhLKayiA6UTqwQ==", "todo_list_id"=>"2", "id"=>"5"}
+  [1m[36mTodoList Load (0.1ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTodoItem Load (0.3ms)[0m  [1m[34mSELECT  "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? AND "todo_items"."id" = ? LIMIT ?[0m  [["todo_list_id", 2], ["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  [1m[31mDELETE FROM "todo_items" WHERE "todo_items"."id" = ?[0m  [["id", 5]]
+  [1m[35m (12.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/todo_lists/2
+Completed 302 Found in 37ms (ActiveRecord: 16.9ms)
+
+
+Started GET "/todo_lists/2" for 127.0.0.1 at 2018-07-06 21:36:02 -0400
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.3ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (5.9ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ?[0m  [["todo_list_id", 2]]
+  Rendered collection of todo_items/_todo_item.html.erb [1 times] (1.0ms)
+  Rendered todo_items/_form.html.erb (7.6ms)
+  Rendered todo_lists/show.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 158ms (Views: 145.5ms | ActiveRecord: 6.2ms)
+
+
+Started DELETE "/todo_lists/2/todo_items/4" for 127.0.0.1 at 2018-07-06 21:36:05 -0400
+Processing by TodoItemsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"zDbEZrNgJhky4XgULiyKvki5NLliT/Wr6++Vudd/rI+LiUWzbfZi92GMUBLDmYkTjcI7hfmhW8nOXzXss4Vzlg==", "todo_list_id"=>"2", "id"=>"4"}
+  [1m[36mTodoList Load (0.2ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTodoItem Load (0.3ms)[0m  [1m[34mSELECT  "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ? AND "todo_items"."id" = ? LIMIT ?[0m  [["todo_list_id", 2], ["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.4ms)[0m  [1m[31mDELETE FROM "todo_items" WHERE "todo_items"."id" = ?[0m  [["id", 4]]
+  [1m[35m (18.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/todo_lists/2
+Completed 302 Found in 49ms (ActiveRecord: 23.0ms)
+
+
+Started GET "/todo_lists/2" for 127.0.0.1 at 2018-07-06 21:36:06 -0400
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.2ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.1ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ?[0m  [["todo_list_id", 2]]
+  Rendered collection of templates [0 times] (0.1ms)
+  Rendered todo_items/_form.html.erb (7.4ms)
+  Rendered todo_lists/show.html.erb within layouts/application (23.9ms)
+Completed 200 OK in 132ms (Views: 125.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/todo_lists/2/edit" for 127.0.0.1 at 2018-07-06 21:36:08 -0400
+Processing by TodoListsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.1ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering todo_lists/edit.html.erb within layouts/application
+  Rendered todo_lists/_form.html.erb (15.3ms)
+  Rendered todo_lists/edit.html.erb within layouts/application (21.0ms)
+Completed 200 OK in 119ms (Views: 112.1ms | ActiveRecord: 0.1ms)
+
+
+Started PATCH "/todo_lists/2" for 127.0.0.1 at 2018-07-06 21:36:24 -0400
+Processing by TodoListsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Ia3j3fd1cPhS8s+6lFtGWfZJDUSOKpF9PUwFc/ugDsXbGUk/T8aVVfsmovIZozPq9cLGaWw4qrWzp1tr+uYQHA==", "todo_list"=>{"title"=>"TODO", "description"=>"for July"}, "commit"=>"Update Todo list", "id"=>"2"}
+  [1m[36mTodoList Load (0.1ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (5.5ms)[0m  [1m[33mUPDATE "todo_lists" SET "title" = ?, "description" = ?, "updated_at" = ? WHERE "todo_lists"."id" = ?[0m  [["title", "TODO"], ["description", "for July"], ["updated_at", "2018-07-07 01:36:24.467636"], ["id", 2]]
+  [1m[35m (299.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/todo_lists/2
+Completed 302 Found in 318ms (ActiveRecord: 305.4ms)
+
+
+Started GET "/todo_lists/2" for 127.0.0.1 at 2018-07-06 21:36:24 -0400
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.1ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.1ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ?[0m  [["todo_list_id", 2]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered todo_items/_form.html.erb (8.1ms)
+  Rendered todo_lists/show.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 101ms (Views: 95.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/todo_lists/2/todo_items" for 127.0.0.1 at 2018-07-06 21:36:32 -0400
+Processing by TodoItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"o+N1Ughp39t6AHQRYOe3PjILMveuXrJvAfr5n6uNcNPkXPSH1v+bNSltXBeNUrST93A9yzWwHA0kSlnKz3evyg==", "todo_item"=>{"content"=>"Get a job"}, "commit"=>"Create Todo item", "todo_list_id"=>"2"}
+  [1m[36mTodoList Load (0.2ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (6.2ms)[0m  [1m[32mINSERT INTO "todo_items" ("content", "todo_list_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["content", "Get a job"], ["todo_list_id", 2], ["created_at", "2018-07-07 01:36:32.178588"], ["updated_at", "2018-07-07 01:36:32.178588"]]
+  [1m[35m (125.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/todo_lists/2
+Completed 302 Found in 141ms (ActiveRecord: 132.2ms)
+
+
+Started GET "/todo_lists/2" for 127.0.0.1 at 2018-07-06 21:36:32 -0400
+Processing by TodoListsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTodoList Load (0.1ms)[0m  [1m[34mSELECT  "todo_lists".* FROM "todo_lists" WHERE "todo_lists"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering todo_lists/show.html.erb within layouts/application
+  [1m[36mTodoItem Load (0.2ms)[0m  [1m[34mSELECT "todo_items".* FROM "todo_items" WHERE "todo_items"."todo_list_id" = ?[0m  [["todo_list_id", 2]]
+  Rendered collection of todo_items/_todo_item.html.erb [1 times] (1.0ms)
+  Rendered todo_items/_form.html.erb (2.5ms)
+  Rendered todo_lists/show.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 94ms (Views: 87.6ms | ActiveRecord: 0.3ms)
+
+
